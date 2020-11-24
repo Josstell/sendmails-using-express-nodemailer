@@ -1,6 +1,15 @@
+
+require('dotenv').config()
+
+
 const { Router } = require('express')
 const  nodemailer  = require('nodemailer')
 const router = Router()
+
+const HOST=process.env.HOST
+const PORT_HOST=process.env.PORT_HOST
+const USER_HOST=process.env.USER_HOST
+const USER_PASS=process.env.USER_PASS
 
 
 router.post('/send-email',  async (req, res) =>  {
@@ -18,12 +27,12 @@ router.post('/send-email',  async (req, res) =>  {
     `
 
 const transporter = nodemailer.createTransport({
-    host: 'mail.mariachon.com',
-    port: 587,
+    host: HOST,
+    port: PORT_HOST,
     secure: false,
     auth: {
-        user: 'tellez@mariachon.com',
-        pass: '3!NVRLVlA=6v'
+        user: USER_HOST,
+        pass: USER_PASS
     },
     tls: {
         rejectUnauthorized: false
